@@ -1,95 +1,109 @@
-#  Food Delivery Time Prediction using Machine Learning
+# 🚴 Delivery Time Prediction using Machine Learning  
 
-##  1. Problem Statement
-Food delivery platforms want to predict how long it will take for food to be delivered, so customers get accurate delivery time estimates.
-
-Your goal is to build a regression model that predicts the **Time_taken (min)** for each food order using available features such as delivery distance, vehicle type, weather conditions, etc.
-
----
-
-## 2. Dataset Description
-
-- Dataset contains real-world delivery data with the following columns:
-  - `Delivery_person_Age`
-  - `Delivery_person_Ratings`
-  - `Restaurant_latitude`, `Restaurant_longitude`
-  - `Delivery_location_latitude`, `Delivery_location_longitude`
-  - `Vehicle_condition`, `Weather_conditions`, `Traffic_density`
-  - `Time_taken (min)` (Target variable)
+## 📌 Overview
+This project predicts **food delivery time** based on factors like **weather, traffic, vehicle type, courier experience, and order details**.  
+The goal is to help food delivery companies (like **Swiggy/Zomato**) **estimate accurate delivery times** and **optimize operations**.  
 
 ---
 
-##  3. Exploratory Data Analysis (EDA)
-
-- Checked for missing values and handled them.
-- Explored correlations and plotted visualizations for:
-  - Delivery time vs traffic
-  - Delivery ratings vs time
-  - Delivery location distances
-
- Example Plots:
-- Correlation heatmaps
-- Delivery time distributions
-- Traffic density comparisons
+## 🎯 Objectives
+- Build and compare machine learning models for **delivery time prediction**.  
+- Analyze key factors influencing delivery delays.  
+- Suggest **business improvements** to reduce delivery time and improve customer satisfaction.  
 
 ---
 
-##  4. Feature Engineering
-
-- Converted timestamps and locations into useful numeric features.
-- Calculated **distance** using Haversine formula.
-- Encoded categorical variables (e.g., Weather, Vehicle Type).
-- Scaled numeric features.
-
----
-
-##  5. Model Building
-
-Trained multiple ML regression models:
-- Linear Regression
-- Decision Tree Regressor
-- Random Forest Regressor
-- XGBoost Regressor
+## 🛠️ Tech Stack
+- **Python** 🐍  
+- **Libraries**: Pandas, NumPy, Scikit-Learn, XGBoost, Plotly, Matplotlib, Seaborn  
+- **ML Models**: Linear Regression, Random Forest, XGBoost  
+- **Evaluation Metrics**: R² Score  
 
 ---
 
-##  6. Conclusion
+## 📂 Project Workflow
+1. **Data Preprocessing**
+   - Handled missing values & categorical encoding (One-Hot Encoding).  
+   - Feature scaling for numerical columns.  
+   - Created derived features like *Experience Groups* and *Time of Day*.  
 
-### What did you learn?
-- Features like **distance, weather, traffic, and delivery ratings** significantly affect delivery time.
-- ML models can reliably predict delivery time within a reasonable error margin.
+2. **Exploratory Data Analysis (EDA)**
+   - Weather: Snow/Rain ⬆️ delivery delays.  
+   - Traffic: Heavy traffic ⬆️ delivery time.  
+   - Vehicle Type: Two-wheelers faster than cars.  
+   - Courier Experience: More experienced → faster deliveries.  
+   - Time of Day: Evening peak hours ⬆️ maximum delays.  
 
-### Business-level Conclusion
-- This model can help food delivery apps (like Swiggy/Zomato) give accurate **ETA predictions** to users.
-- Can improve customer trust and logistics planning.
+3. **Model Training**
+   - Linear Regression  
+   - Random Forest Regressor  
+   - XGBoost Regressor  
 
----
-
-##  Future Work
-
-- Include real-time GPS tracking and dynamic traffic data.
-- Try deep learning models (LSTM/GRU) for time-series prediction.
-- Deploy as a Flask or Streamlit-based web app.
-
----
-
-##  Tools Used
-
-| Tool | Purpose |
-|------|---------|
-| Python | Core programming |
-| Pandas | Data manipulation |
-| Matplotlib, Seaborn | Visualization |
-| Scikit-learn | ML models |
-| XGBoost | Advanced regression |
-| Jupyter Notebook | Development environment |
-
+4. **Evaluation**
+   - Train/Test splits (80-20, 70-30, etc.)  
+   - K-Fold Cross Validation (5-folds)  
+   - Feature importance analysis  
 
 ---
 
-##  How to Run
+## 📊 Results (R² Accuracy %)
 
-```1. Clone this repo
-2. Open `food_delivery_model.ipynb` in Jupyter
-3. Run all cells in order
+| Model              | Setting              | Accuracy % |
+|--------------------|---------------------|------------|
+| **Linear Regression** | 80-20 Split         | **83.40** |
+| Linear Regression   | 70-30 Split         | 83.24      |
+| Linear Regression   | 60-40 Split         | 81.93      |
+| Linear Regression   | 50-50 Split         | 80.62      |
+| Linear Regression   | K-Fold CV (5)       | 77.70      |
+| **Random Forest**   | n_estimators=50     | 76.26      |
+| Random Forest       | n_estimators=500    | 77.14      |
+| Random Forest       | K-Fold CV (5)       | 72.30      |
+| **XGBoost**         | Various Params      | ~71–72     |
+
+✅ **Best Model:** Linear Regression (80-20 split) with **83.4% accuracy**.  
+
+---
+
+## 🔑 Key Insights
+- Delivery time is **mostly linear** with features → Linear Regression worked best.  
+- Complex models (Random Forest, XGBoost) did not outperform.  
+- External factors (weather, traffic, peak hours) heavily affect delays.  
+
+---
+
+## 🚀 Real-Life Recommendations for Companies
+1. **Weather Forecast Integration** → Use real-time weather data to adjust ETAs.  
+2. **Smart Traffic-Aware Routing** → Use Google Maps APIs for live traffic optimization.  
+3. **Dynamic Vehicle Allocation** → Assign two-wheelers in high-traffic areas.  
+4. **Peak Hour Demand Management** → Increase couriers & offer surge pay during rush hours.  
+5. **Experience-Based Training** → Train new couriers, assign experts for critical orders.  
+
+---
+
+## ✅ Final Conclusion
+- The **best performing model was Linear Regression** (83.4% accuracy).  
+- Delivery time can be **predicted reliably** using simple models.  
+- Businesses can **improve customer satisfaction** by optimizing traffic handling, weather awareness, and peak-time strategies.  
+
+---
+
+## 📌 Future Improvements
+- Add **real-time GPS data** for accurate route estimation.  
+- Try **Deep Learning models (LSTM, RNN)** for time-series delivery prediction.  
+- Include **order size, restaurant preparation time, and customer distance** for better accuracy.  
+
+---
+
+## 📷 Sample Visualizations
+*(Optional – You can add screenshots of your EDA plots or accuracy bar charts here)*  
+
+---
+
+## 👨‍💻 Author
+- **Rahul Verma**  
+📧 [rahulverma69124@gmail.com]  
+🌐 [https://www.linkedin.com/in/rahulverma169/]  
+
+---
+
 
